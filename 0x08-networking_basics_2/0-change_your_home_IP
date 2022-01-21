@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# change ip addr for local host and facebook
+
+# get a copy of host file to work with
+cp /etc/hosts ~/hosts.new
+
+
+# replace old localhost ip with new one
+sed -i "s/127.0.0.1/127.0.0.2/g" ~/hosts.new
+
+# configure for facebook
+printf "8.8.8.8\t\tfacebook.com" >> ~/hosts.new
+
+# replace the configure host file
+cp -f ~/hosts.new /etc/hosts
