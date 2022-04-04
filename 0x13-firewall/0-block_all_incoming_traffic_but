@@ -1,5 +1,6 @@
 #!/bin/bash
 # deny all incoming except 22/tcp - ssh, 443/tcp - https, 80/tcp - http
+sudo ufw disable
 sudo ufw default deny incoming
 sudo ufw allow 22/tcp
 sudo ufw allow 443/tcp
