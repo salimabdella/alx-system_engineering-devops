@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# generate a MySQL dump backup
+
+if [[ "$#" -lt 1 ]]; then
+	echo "Usage: $0 <passowrd>";
+	exit;
+fi
+
+mysqldump -u root -p"$1" --all-databases > backup.sql
+tar -czf "$(date '+%d-%m-%Y').tar.gz" backup.sql
+
