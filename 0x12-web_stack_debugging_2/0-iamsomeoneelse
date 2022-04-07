@@ -1,0 +1,8 @@
+#!/bin/bash
+# run whoami in different user
+if [[ "$#" -lt 1 ]]; then
+	echo "Usage $0 <user>";
+	exit;
+fi
+
+sudo -H -u "$1" bash -c whoami
