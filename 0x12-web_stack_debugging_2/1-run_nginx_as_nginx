@@ -3,7 +3,12 @@
 # change the port to 8080
 
 pkill -f apache2
+
+sudo sed -i 's/#user www-data/user nginx/' /etc/nginx/nginx.conf
+
 chown nginx:nginx /etc/nginx/nginx.conf
 chmod 700 /etc/nginx/nginx.conf
-sed -i 's/80 default_server/8080 default_server/' /etc/nginx/sites-available/default
-sudo -H -u nginx bash -c service nginx start
+
+sudo sed -i 's/80 default_server/8080 default_server/' /etc/nginx/sites-available/default
+
+sudo -H -u nginx bash -c service nginx restart
