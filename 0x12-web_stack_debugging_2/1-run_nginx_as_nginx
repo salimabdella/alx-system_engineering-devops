@@ -2,13 +2,17 @@
 # nginx permission fix
 # change the port to 8080
 
-pkill -f apache2
+# kill process
+sudo pkill apache2
 
-sudo sed -i 's/#user www-data/user nginx/' /etc/nginx/nginx.conf
+# change port
+sudo sed -i "s/80/8080/g" /etc/nginx/sites-enabled/default
 
-chown nginx:nginx /etc/nginx/nginx.conf
-chmod 700 /etc/nginx/nginx.conf
+# change the config owner
+sudo chown -R nginx:nginx /etc/nginx/nginx.conf
 
-sudo sed -i 's/80 default_server/8080 default_server/' /etc/nginx/sites-available/default
+# change the config mod
+sudo chmod -R 700 /etc/nginx/nginx.conf
 
-sudo -H -u nginx bash -c service nginx restart
+# restart nginx service
+sudo -u nginx service nginx restart
